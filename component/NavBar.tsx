@@ -30,7 +30,37 @@ const NavBar = () => {
 
   return (
     <>
-      <Box>
+      <Box sx={{ display: "flex" }}>
+        <img
+          src="http://clbtinhoc.cuongpham.vn/logo.png"
+          alt=""
+          style={{ width: "150px" }}
+        />
+        <Box sx={{ marginTop: 4 }}>
+          <Typography
+            sx={{ color: "#005CCC", fontWeight: "bold" }}
+            variant="h3"
+            color="initial"
+          >
+            CLB TIN HỌC
+          </Typography>
+          <Typography
+            sx={{ color: "#005CCC", fontSize: "20px" }}
+            variant="body1"
+            color="initial"
+          >
+            Tin thi học, không tin thì chuồn
+          </Typography>
+        </Box>
+        <Box sx={{ marginLeft: 90 }}>
+          <img
+            style={{ width: "200px" }}
+            src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
+            alt=""
+          />
+        </Box>
+      </Box>
+      <Box sx={{ marginTop: 1 }}>
         <AppBar position="static">
           <Toolbar>
             <Link href="/" passHref>
@@ -119,7 +149,7 @@ const NavBar = () => {
             {user && (
               <Button
                 sx={{
-                  "&:hover": { backgroundColor: "#1a237e" },
+                  backgroundColor: "#1a237e",
                   color: "white",
                   marginLeft: 80,
                 }}

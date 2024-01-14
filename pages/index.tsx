@@ -1,3 +1,4 @@
+import BackgroundSwitch from "@/component/BackgroundSwitch";
 import Footer from "@/component/Footer";
 import ImageSlider from "@/component/ImageSlider";
 import NavBar from "@/component/NavBar";
@@ -13,11 +14,13 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 function HomePages() {
   const [newsList, setNewsList] = useState<any>();
   const [activities, setActivities] = useState<any>([]);
   const [user, setUser] = useState<any>();
+  const [background, setBackground] = useState("white");
 
   useEffect(() => {
     const fetchActivities = async () => {
@@ -68,11 +71,31 @@ function HomePages() {
     return `${hours}:${minutes} - ${day}/${month}/${year} `;
   };
 
+  const handleToggle = () => {
+    setBackground((prev) => (prev === "white" ? "lightgray" : "white"));
+  };
+
   return (
-    <>
+    <Box sx={{ backgroundColor: background, height: "100%" }}>
       <NavBar />
+      <BackgroundSwitch onToggle={handleToggle} />
       <Typography
-        sx={{ paddingTop: 5, textAlign: "center", fontFamily: "monospace" }}
+        sx={{
+          marginTop: 5,
+          paddingBottom: 2,
+          paddingTop: 2,
+          textAlign: "center",
+          width: "40%",
+          marginLeft: "30%",
+          color: "#005CCC",
+          fontWeight: "bold",
+          boxShadow: "5px 5px 10px lightgray",
+          borderRadius: "10px",
+          borderLeft: "4px solid #005CCC",
+          borderRight: "4px solid #005CCC",
+          textShadow:
+            "2px 7px 5px rgba(0, 0, 0, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3)",
+        }}
         variant="h4"
         color="initial"
       >
@@ -82,7 +105,20 @@ function HomePages() {
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <Typography
-            sx={{ paddingTop: 5, textAlign: "center", fontFamily: "monospace" }}
+            sx={{
+              marginTop: 8,
+              paddingBottom: 2,
+              paddingTop: 2,
+              textAlign: "center",
+              fontFamily: "monospace",
+              borderLeft: "4px solid #005CCC",
+              borderRight: "4px solid #005CCC",
+              boxShadow: "15px 15px 10px lightgray",
+              width: "80%",
+              marginLeft: "10%",
+              borderRadius: "20px",
+              color: "#005CCC",
+            }}
             variant="h5"
             color="initial"
           >
@@ -95,9 +131,28 @@ function HomePages() {
                 elevation={3}
                 style={{ marginBottom: "16px", padding: "16px" }}
               >
-                <Card>
+                <Card
+                  sx={{
+                    transition: "box-shadow 0.3s ease",
+                    "&:hover": {
+                      boxShadow: "0px 5px 15px #005CCC",
+                      cursor: "pointer",
+                    },
+                  }}
+                >
                   <CardContent>
-                    <Typography variant="h5" component="div">
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        color: "#005CCC",
+                        textAlign: "center",
+                        paddingBottom: 1,
+                        paddingTop: 1,
+                        borderRadius: "10px",
+                      }}
+                      variant="h6"
+                      component="div"
+                    >
                       {news.title}
                     </Typography>
                     <Typography
@@ -105,7 +160,18 @@ function HomePages() {
                       color="textSecondary"
                       gutterBottom
                     >
-                      Date:{formatDateString(news.created_at)}
+                      <Box sx={{ display: "flex" }}>
+                        <Typography variant="body1" color="initial">
+                          <AccessTimeIcon color="primary" />
+                        </Typography>
+                        <Typography
+                          sx={{ marginLeft: 1 }}
+                          variant="body1"
+                          color="initial"
+                        >
+                          <small>{formatDateString(news.created_at)}</small>
+                        </Typography>
+                      </Box>
                     </Typography>
                     <Typography variant="body1" paragraph>
                       {news.content}
@@ -119,20 +185,41 @@ function HomePages() {
 
         <Grid item xs={6}>
           <Typography
-            sx={{ paddingTop: 5, textAlign: "center", fontFamily: "monospace" }}
+            sx={{
+              marginTop: 8,
+              paddingBottom: 2,
+              paddingTop: 2,
+              textAlign: "center",
+              fontFamily: "monospace",
+              borderLeft: "4px solid #005CCC",
+              borderRight: "4px solid #005CCC",
+              boxShadow: "15px 15px 10px lightgray",
+              width: "80%",
+              marginLeft: "10%",
+              borderRadius: "20px",
+              color: "#005CCC",
+            }}
             variant="h5"
             color="initial"
           >
             Danh sách hoạt động
           </Typography>
           <Container sx={{ marginTop: 5, marginBottom: 15 }}>
-            {activities.map((activity: any, index: any) => (
+            {activities?.map((activity: any, index: any) => (
               <Paper
                 key={index}
                 elevation={3}
-                style={{ padding: "10px", marginBottom: "16px" }}
+                style={{ padding: "16px", marginBottom: "16px" }}
               >
-                <Card>
+                <Card
+                  sx={{
+                    transition: "box-shadow 0.3s ease",
+                    "&:hover": {
+                      boxShadow: "0px 5px 15px #005CCC",
+                      cursor: "pointer",
+                    },
+                  }}
+                >
                   <CardContent>
                     <Typography variant="h5" component="div">
                       {activity.name}
@@ -172,9 +259,8 @@ function HomePages() {
           </Container>
         </Grid>
       </Grid>
-
       <Footer />
-    </>
+    </Box>
   );
 }
 
