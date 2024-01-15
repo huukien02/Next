@@ -23,6 +23,7 @@ const News = () => {
   const [content, setContent] = useState("");
   const [newsList, setNewsList] = useState([]);
   const [user, setUser] = useState<any>();
+  const [image, setImage] = useState<any>(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("userLogin");
@@ -31,12 +32,27 @@ const News = () => {
     }
   }, []);
 
+  const handleImageChange = (e: any) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
   const handleCreateNews = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/news/create", {
-        title,
-        content,
-      });
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("content", content);
+      formData.append("image", image);
+
+      const response = await axios.post(
+        "http://localhost:3000/news/create",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       if (response.data.status == 200) {
         alert("Tạo tin thành công");
@@ -114,7 +130,16 @@ const News = () => {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
+              <Box sx={{ marginTop: 2 }}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+              </Box>
+
               <Button
+                sx={{ marginTop: 5 }}
                 variant="contained"
                 color="primary"
                 onClick={handleCreateNews}
@@ -130,6 +155,7 @@ const News = () => {
                     <TableCell>ID</TableCell>
                     <TableCell>Title</TableCell>
                     <TableCell>Content</TableCell>
+                    <TableCell>Images</TableCell>
                     <TableCell>Date</TableCell>
                     <TableCell>Action</TableCell>
                   </TableRow>
@@ -140,6 +166,13 @@ const News = () => {
                       <TableCell>{news.id}</TableCell>
                       <TableCell>{news.title}</TableCell>
                       <TableCell>{news.content}</TableCell>
+                      <TableCell>
+                        <img
+                          style={{ width: "150px" }}
+                          src={news.image}
+                          alt=""
+                        />
+                      </TableCell>
                       <TableCell>{formatDateString(news.created_at)}</TableCell>
                       <TableCell>
                         <Button

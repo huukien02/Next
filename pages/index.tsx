@@ -7,6 +7,7 @@ import {
   Button,
   Card,
   CardContent,
+  CardMedia,
   Container,
   Grid,
   Pagination,
@@ -176,41 +177,61 @@ function HomePages() {
                   }}
                 >
                   <CardContent>
-                    <Typography
-                      sx={{
-                        fontWeight: "bold",
-                        color: "#005CCC",
-                        textAlign: "center",
-                        paddingBottom: 1,
-                        paddingTop: 1,
-                        borderRadius: "10px",
-                      }}
-                      variant="h6"
-                      component="div"
-                    >
-                      {news.title}
-                    </Typography>
-                    <Typography
-                      variant="subtitle2"
-                      color="textSecondary"
-                      gutterBottom
-                    >
-                      <Box sx={{ display: "flex" }}>
-                        <Typography variant="body1" color="initial">
-                          <AccessTimeIcon color="primary" />
+                    <Grid container spacing={2}>
+                      <Grid item>
+                        <CardMedia
+                          component="img"
+                          alt={news.title}
+                          style={{
+                            height: 180,
+                            width: "300px",
+                            objectFit: "cover",
+                          }}
+                          image={news.image}
+                        />
+                      </Grid>
+                      <Grid item>
+                        <Typography
+                          sx={{
+                            fontWeight: "bold",
+                            color: "#005CCC",
+                            textAlign: "left",
+                            paddingBottom: 1,
+                            paddingTop: 1,
+                            borderRadius: "10px",
+                          }}
+                          variant="h6"
+                          component="div"
+                        >
+                          {news.title}
                         </Typography>
                         <Typography
-                          sx={{ marginLeft: 1 }}
-                          variant="body1"
-                          color="initial"
+                          variant="subtitle2"
+                          color="textSecondary"
+                          gutterBottom
                         >
-                          <small>{formatDateString(news.created_at)}</small>
+                          <Box sx={{ display: "flex" }}>
+                            <Typography variant="body1" color="initial">
+                              <AccessTimeIcon color="primary" />
+                            </Typography>
+                            <Typography
+                              sx={{ marginLeft: 1 }}
+                              variant="body1"
+                              color="initial"
+                            >
+                              <small>{formatDateString(news.created_at)}</small>
+                            </Typography>
+                          </Box>
                         </Typography>
-                      </Box>
-                    </Typography>
-                    <Typography variant="body1" paragraph>
-                      {news.content}
-                    </Typography>
+                        <Typography
+                          sx={{ marginTop: 5 }}
+                          variant="body1"
+                          paragraph
+                        >
+                          {news.content}
+                        </Typography>
+                      </Grid>
+                    </Grid>
                   </CardContent>
                 </Card>
               </Paper>
