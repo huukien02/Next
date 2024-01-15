@@ -9,6 +9,8 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import WavingHandIcon from "@mui/icons-material/WavingHand";
+import Head from "next/head";
 
 const NavBar = () => {
   const router = useRouter();
@@ -30,36 +32,48 @@ const NavBar = () => {
 
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        <img
-          src="http://clbtinhoc.cuongpham.vn/logo.png"
-          alt=""
-          style={{ width: "150px" }}
-        />
-        <Box sx={{ marginTop: 4 }}>
-          <Typography
-            sx={{ color: "#005CCC", fontWeight: "bold" }}
-            variant="h3"
-            color="initial"
-          >
-            CLB TIN HỌC
-          </Typography>
-          <Typography
-            sx={{ color: "#005CCC", fontSize: "20px" }}
-            variant="body1"
-            color="initial"
-          >
-            Tin thi học, không tin thì chuồn
-          </Typography>
-        </Box>
-        <Box sx={{ marginLeft: 90 }}>
+      <Head>
+        <title>Trang chủ</title>
+      </Head>
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           <img
-            style={{ width: "200px" }}
-            src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
+            src="http://clbtinhoc.cuongpham.vn/logo.png"
+            alt=""
+            style={{ width: "150px" }}
+          />
+
+          <Box sx={{ marginTop: 4, marginLeft: 10 }}>
+            <Typography
+              sx={{ color: "#005CCC", fontWeight: "bold" }}
+              variant="h3"
+              color="initial"
+            >
+              CLB TIN HỌC
+            </Typography>
+            <Typography
+              sx={{ color: "#005CCC", fontSize: "20px" }}
+              variant="body1"
+              color="initial"
+            >
+              Tin thi học, không tin thì chuồn
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box>
+          <img src="http://cntt.ntt.edu.vn/upload/file/banner.png" alt="" />
+        </Box>
+
+        <Box>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI2ixppveYbsFut3mtUKsns5bYNjixedk6rm2T5SpWSA&s"
+            // src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
             alt=""
           />
         </Box>
       </Box>
+
       <Box sx={{ marginTop: 1 }}>
         <AppBar position="static">
           <Toolbar>
@@ -128,8 +142,9 @@ const NavBar = () => {
               <Button
                 onClick={handleLogout}
                 sx={{
-                  "&:hover": { backgroundColor: "#1a237e" },
+                  "&:hover": { fontWeight: "bold" },
                   color: "white",
+                  marginLeft: "auto",
                 }}
               >
                 Đăng xuất
@@ -139,7 +154,7 @@ const NavBar = () => {
             <Link href="/signup" passHref>
               <Button
                 sx={{
-                  "&:hover": { backgroundColor: "#1a237e" },
+                  "&:hover": { fontWeight: "bold" },
                   color: "white",
                 }}
               >
@@ -151,10 +166,12 @@ const NavBar = () => {
                 sx={{
                   backgroundColor: "#1a237e",
                   color: "white",
-                  marginLeft: 80,
                 }}
               >
-                Xin chào: {user.username}
+                <WavingHandIcon />{" "}
+                <small style={{ display: "float", marginLeft: "5px" }}>
+                  {user.username}
+                </small>
               </Button>
             )}
           </Toolbar>

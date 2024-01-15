@@ -22,7 +22,6 @@ const News = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [newsList, setNewsList] = useState([]);
-
   const [user, setUser] = useState<any>();
 
   useEffect(() => {
@@ -48,7 +47,6 @@ const News = () => {
         alert("Tạo tin thất bại");
       }
     } catch (error: any) {
-      // Handle errors
       console.error("Error creating news", error.message);
     }
   };

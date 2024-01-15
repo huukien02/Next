@@ -9,6 +9,7 @@ import {
   CardContent,
   Container,
   Grid,
+  Pagination,
   Paper,
   Typography,
 } from "@mui/material";
@@ -22,30 +23,55 @@ function HomePages() {
   const [user, setUser] = useState<any>();
   const [background, setBackground] = useState("white");
 
+  const [currentPageNew, setCurrentPageNew] = useState(1);
+  const [totalPagesNew, setTotalPagesNew] = useState(1);
+  const itemsPerPageNew = 3;
+
+  const [currentPageActive, setCurrentPageActive] = useState(1);
+  const [totalPagesActive, setTotalPagesActive] = useState(1);
+  const itemsPerPageActive = 3;
+
   useEffect(() => {
     const fetchActivities = async () => {
       try {
         const response = await axios.get("http://localhost:3000/activities");
-        setActivities(response.data.activities);
+        const totalItems = response.data.activities.length;
+        setTotalPagesActive(Math.ceil(totalItems / itemsPerPageActive));
+
+        const startIndex = (currentPageActive - 1) * itemsPerPageActive;
+        const endIndex = startIndex + itemsPerPageActive;
+        const slicedActivities = response.data.activities.slice(
+          startIndex,
+          endIndex
+        );
+        setActivities(slicedActivities);
       } catch (error) {
         console.error("Error fetching activities:", error);
       }
     };
-
     fetchActivities();
-  }, []);
+  }, [currentPageActive]);
 
   useEffect(() => {
     const fetchNewsList = async () => {
       try {
         const response = await axios.get("http://localhost:3000/news");
-        setNewsList(response.data.list_news);
+        const totalItems = response.data.list_news.length;
+        setTotalPagesNew(Math.ceil(totalItems / itemsPerPageNew));
+
+        const startIndex = (currentPageNew - 1) * itemsPerPageNew;
+        const endIndex = startIndex + itemsPerPageNew;
+        const slicedNewsList = response.data.list_news.slice(
+          startIndex,
+          endIndex
+        );
+        setNewsList(slicedNewsList);
       } catch (error: any) {
         console.error("Error fetching news list", error.message);
       }
     };
     fetchNewsList();
-  }, []);
+  }, [currentPageNew]);
 
   const handleDetailActive = (content: any) => {
     alert(content);
@@ -125,6 +151,15 @@ function HomePages() {
             Danh sách tin tức
           </Typography>
           <Container sx={{ marginTop: 5, marginBottom: 15 }}>
+            <Box sx={{ paddingBottom: 4 }}>
+              <Pagination
+                count={totalPagesNew}
+                page={currentPageNew}
+                variant="outlined"
+                color="primary"
+                onChange={(event, value) => setCurrentPageNew(value)}
+              />
+            </Box>
             {newsList?.map((news: any, index: any) => (
               <Paper
                 key={index}
@@ -204,7 +239,17 @@ function HomePages() {
           >
             Danh sách hoạt động
           </Typography>
+
           <Container sx={{ marginTop: 5, marginBottom: 15 }}>
+            <Box sx={{ paddingBottom: 4 }}>
+              <Pagination
+                variant="outlined"
+                color="primary"
+                onChange={(event, value) => setCurrentPageActive(value)}
+                count={totalPagesActive}
+                page={itemsPerPageActive}
+              />
+            </Box>
             {activities?.map((activity: any, index: any) => (
               <Paper
                 key={index}
