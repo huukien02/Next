@@ -9,6 +9,8 @@ import {
   Paper,
   TextField,
   Button,
+  Rating,
+  Box,
 } from "@mui/material";
 import NavBar from "@/component/NavBar";
 import Footer from "@/component/Footer";
@@ -21,6 +23,7 @@ const FeedbackPage = () => {
   const [content, setContent] = useState<any>();
   const [change, setChange] = useState<any>();
   const [feedbackData, setFeedbackData] = useState<any>();
+  const [rate, setRate] = useState<any>(5);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("userLogin");
@@ -48,6 +51,7 @@ const FeedbackPage = () => {
       const response = await axios.post(
         "http://localhost:3000/feedback/create",
         {
+          rate,
           content,
           userId: user.id,
         }
@@ -56,6 +60,7 @@ const FeedbackPage = () => {
       if (response.data.status == 200) {
         alert("Đóng góp ý kiến thành công");
         setContent("");
+        setRate(5);
 
         setChange((prev: any) => !prev);
       } else {
@@ -122,7 +127,13 @@ const FeedbackPage = () => {
                   style={{ marginBottom: "16px", padding: "16px" }}
                 >
                   <Typography variant="body1" color="initial">
-                    <strong>{feedback.user.username}: </strong>
+                    <strong>{feedback.user.username} </strong>
+                    <Rating
+                      size="small"
+                      sx={{ marginLeft: 3 }}
+                      name="simple-controlled"
+                      value={feedback.rate}
+                    />
                   </Typography>
                   <ListItem>
                     <ListItemText
@@ -165,6 +176,16 @@ const FeedbackPage = () => {
             </List>
 
             <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
+              <Box>
+                <Typography>Đánh giá</Typography>
+                <Rating
+                  name="simple-controlled"
+                  value={rate}
+                  onChange={(event, newValue) => {
+                    setRate(newValue);
+                  }}
+                />
+              </Box>
               <TextField
                 label="Content"
                 fullWidth
@@ -174,6 +195,7 @@ const FeedbackPage = () => {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
+
               <Button
                 variant="contained"
                 color="primary"
