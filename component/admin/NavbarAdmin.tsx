@@ -148,16 +148,6 @@ const NavbarAdmin = () => {
                   </Button>
                 )}
 
-                <Link href="/signup" passHref>
-                  <Button
-                    sx={{
-                      "&:hover": { fontWeight: "bold" },
-                      color: "white",
-                    }}
-                  >
-                    Đăng kí
-                  </Button>
-                </Link>
                 {user && (
                   <Button
                     sx={{
