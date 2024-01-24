@@ -35,7 +35,13 @@ const NavBar = () => {
       <Head>
         <title>Trang chủ</title>
       </Head>
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <img
             src="http://clbtinhoc.cuongpham.vn/logo.png"
@@ -67,9 +73,10 @@ const NavBar = () => {
 
         <Box>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI2ixppveYbsFut3mtUKsns5bYNjixedk6rm2T5SpWSA&s"
-            // src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
+            // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI2ixppveYbsFut3mtUKsns5bYNjixedk6rm2T5SpWSA&s"
+            src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
             alt=""
+            style={{width:'100px'}}
           />
         </Box>
       </Box>
@@ -85,6 +92,16 @@ const NavBar = () => {
                 }}
               >
                 Trang chủ
+              </Button>
+            </Link>
+            <Link href="/intro" passHref>
+              <Button
+                sx={{
+                  "&:hover": { backgroundColor: "#1a237e" },
+                  color: "white",
+                }}
+              >
+                Giới thiệu
               </Button>
             </Link>
             <Link href="/news" passHref>
@@ -151,7 +168,7 @@ const NavBar = () => {
               </Button>
             )}
 
-            <Link href="/signup" passHref>
+            {/* <Link href="/signup" passHref>
               <Button
                 sx={{
                   "&:hover": { fontWeight: "bold" },
@@ -160,7 +177,7 @@ const NavBar = () => {
               >
                 Đăng kí
               </Button>
-            </Link>
+            </Link> */}
             {user && (
               <Button
                 sx={{

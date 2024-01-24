@@ -81,6 +81,16 @@ function News() {
                     {news.content}
                   </Typography>
                 </CardContent>
+                <CardContent>
+                  <img
+                    src={news.image}
+                    alt=""
+                    style={{
+                      width: "50%",
+                      height: "200px",
+                    }}
+                  />
+                </CardContent>
               </Card>
             </Paper>
           ))}

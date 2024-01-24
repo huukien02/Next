@@ -64,9 +64,9 @@ const NavbarAdmin = () => {
 
             <Box>
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI2ixppveYbsFut3mtUKsns5bYNjixedk6rm2T5SpWSA&s"
-                // src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
+                src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
                 alt=""
+                style={{width:'100px'}}
               />
             </Box>
           </Box>

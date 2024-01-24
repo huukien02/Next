@@ -126,7 +126,7 @@ function HomePages() {
         variant="h4"
         color="initial"
       >
-        Câu Lạc Bộ Tin Học
+        Câu Lạc Bộ STEM
       </Typography>
       <ImageSlider />
       <Grid container spacing={2}>
