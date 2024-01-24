@@ -44,7 +44,11 @@ const Login = () => {
   return (
     <>
       <NavBar />
-      <Container sx={{ marginTop: 10 }} component="main" maxWidth="xs">
+      <Container
+        sx={{ marginTop: 5 }}
+        component="main"
+        maxWidth="xs"
+      >
         <Paper
           elevation={3}
           sx={{

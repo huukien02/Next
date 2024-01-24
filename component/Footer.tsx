@@ -60,14 +60,10 @@ const Footer = () => {
             <Typography>
               <LocalPhoneIcon /> 0914.128.394
             </Typography>
-
-            <Typography>
-              <EmailIcon /> LuuDucTho@gmail.com
-            </Typography>
           </Box>
 
           <Box sx={{ textAlign: "left" }}>
-            <Typography>© 2024 IT CLUB. Tất cả các quyền được bảo lưu.</Typography>
+            <Typography>© 2024 STEM CLUB. Tất cả các quyền được bảo lưu.</Typography>
             <Typography>© Khoa công nghệ thông tin</Typography>
           </Box>
         </Box>

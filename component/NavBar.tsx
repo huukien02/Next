@@ -49,7 +49,7 @@ const NavBar = () => {
               variant="h3"
               color="initial"
             >
-              CLB TIN HỌC
+              CLB STEM
             </Typography>
             <Typography
               sx={{ color: "#005CCC", fontSize: "20px" }}
