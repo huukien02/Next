@@ -76,7 +76,7 @@ const NavBar = () => {
             // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI2ixppveYbsFut3mtUKsns5bYNjixedk6rm2T5SpWSA&s"
             src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
             alt=""
-            style={{width:'100px'}}
+            style={{ width: "100px" }}
           />
         </Box>
       </Box>
@@ -145,16 +145,28 @@ const NavBar = () => {
               </Button>
             </Link>
             {!user ? (
-              <Link href="/login" passHref>
-                <Button
-                  sx={{
-                    "&:hover": { backgroundColor: "#1a237e" },
-                    color: "white",
-                  }}
-                >
-                  Đăng nhập
-                </Button>
-              </Link>
+              <>
+                <Link href="/login" passHref>
+                  <Button
+                    sx={{
+                      "&:hover": { backgroundColor: "#1a237e" },
+                      color: "white",
+                    }}
+                  >
+                    Đăng nhập
+                  </Button>
+                </Link>
+                <Link href="/signup" passHref>
+                  <Button
+                    sx={{
+                      "&:hover": { fontWeight: "bold" },
+                      color: "white",
+                    }}
+                  >
+                    Đăng kí
+                  </Button>
+                </Link>
+              </>
             ) : (
               <Button
                 onClick={handleLogout}
@@ -168,16 +180,6 @@ const NavBar = () => {
               </Button>
             )}
 
-            {/* <Link href="/signup" passHref>
-              <Button
-                sx={{
-                  "&:hover": { fontWeight: "bold" },
-                  color: "white",
-                }}
-              >
-                Đăng kí
-              </Button>
-            </Link> */}
             {user && (
               <Button
                 sx={{

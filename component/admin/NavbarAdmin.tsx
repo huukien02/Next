@@ -46,7 +46,7 @@ const NavbarAdmin = () => {
                   variant="h3"
                   color="initial"
                 >
-                  CLB TIN HỌC
+                  CLB STEM
                 </Typography>
                 <Typography
                   sx={{ color: "#005CCC", fontSize: "20px" }}
@@ -66,7 +66,7 @@ const NavbarAdmin = () => {
               <img
                 src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
                 alt=""
-                style={{width:'100px'}}
+                style={{ width: "100px" }}
               />
             </Box>
           </Box>

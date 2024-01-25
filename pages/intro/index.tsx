@@ -16,7 +16,9 @@ function Intro() {
           />
         </Box>
         <Box sx={{ marginTop: 5, textAlign: "center" }}>
-          <Typography variant="h4">STEM - UNETI LAB</Typography>
+          <Typography variant="h4" color="#1976d2">
+            STEM - UNETI LAB
+          </Typography>
         </Box>
         <Box sx={{ padding: 10, borderTop: "1px solid #000" }}>
           <Typography variant="body1" color="initial">

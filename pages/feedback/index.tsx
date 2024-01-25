@@ -109,7 +109,7 @@ const FeedbackPage = () => {
           <Container sx={{ paddingBottom: 15 }}>
             <Typography
               variant="h4"
-              color="initial"
+              color="#1976d2"
               sx={{
                 fontFamily: "monospace",
                 textAlign: "center",
